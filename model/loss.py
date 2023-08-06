@@ -181,77 +181,18 @@ class Loss(nn.Module):
         # FLAGS.tv3d_z_reg_weight=0.00005
         # mse=mse*0.1
 
-        # ratio_mse=0.1
-        # ratio_ssim=1
-        # ratio_tv_z=0.00005
-        # ratio_tv_xy=5
-        # ratio_reg=0.00005
-
-        ## run 3000 steps and broken
-        # ratio_mse=0.01
-        # ratio_ssim=0.5
-        # ratio_tv_z=0.00003
-        # ratio_tv_xy=2
-        # ratio_reg=0.00005
-
-        # # 结果过于平滑 丢失信息 run 2500 steps and broken
-        # ratio_mse=0.1
-        # ratio_ssim=0.5
-        # ratio_tv_z=0.00003
-        # ratio_tv_xy=1
-        # ratio_reg=0.00005
-
-        ## haixing
-        # ratio_mse=0.1
-        # ratio_ssim=0.1
-        # ratio_tv_z=0.00003
-        # ratio_tv_xy=0.008
-        # ratio_reg=0.00005
-
-        # if steps<500:
-        #     ratio_mse=0.01
-        #     ratio_ssim=0.1
-        #     ratio_tv_z=0.0003
-        #     ratio_tv_xy=0.008
-        #     ratio_reg=100
-        # if steps<1200:
-        #     ratio_mse=1
-        #     ratio_ssim=0.000001
-        #     ratio_tv_z=1.5e-06
-        #     ratio_tv_xy=0.00001
-        #     ratio_reg=3e-02
-        # else:
-        #     ratio_mse=0.005
-        #     ratio_ssim=0.005
-        #     ratio_tv_z=0.0000001
-        #     ratio_tv_xy=0.0000008
-        #     ratio_reg=1
-        # if steps<1200:
-        #     ratio_mse=1
-        #     ratio_ssim=0.000000
-        #     ratio_tv_z=3e-07
-        #     ratio_tv_xy=0.0000
-        #     ratio_reg=3e-03
-
-        # 非常好的一组
-        # ratio_mse=1
-        # ratio_ssim=0.00
-        # ratio_tv_z=1e-06
-        # ratio_tv_xy=0
-        # ratio_reg=1e-02
-
-        # ratio_mse=1.1
-        # ratio_ssim=0.01
-        # ratio_tv_z=1e-06
-        # ratio_tv_xy=1e-06
-        # ratio_reg=5e-03
-
         if steps < 9600:
             ratio_mse = 1.0
             ratio_ssim = 0.0
             ratio_tv_z = 3e-07
             ratio_tv_xy = 0
             ratio_reg = 1e-05
+        elif steps < 19200:
+            ratio_mse = 1
+            ratio_ssim = 0.01
+            ratio_tv_z = 8e-07
+            ratio_tv_xy = 1e-06
+            ratio_reg = 5e-03
         else:
             FLAGS.loss = "l1"
             ratio_mse = 1

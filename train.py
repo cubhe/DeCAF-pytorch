@@ -109,18 +109,18 @@ def train(FLAGS, train_provider, learning_rate=1e-5, epochs=8000, restore=None):
         for iter in range(iters_per_epoch):
             # training
             # optimizer = torch.optim.Adam(model.parameters(), lr=lr)
-            if global_step < 3200:
+            if global_step<9600:
                 for param_group in optimizer.param_groups:
-                    param_group['lr'] = 0.0001
-                    temp_lr = param_group['lr']
-            elif global_step < 9600:
+                    param_group['lr']=0.0001
+                    temp_lr=param_group['lr']
+            elif global_step<19200:
                 for param_group in optimizer.param_groups:
-                    param_group['lr'] = 0.00005
-                    temp_lr = param_group['lr']
+                    param_group['lr']=0.00005
+                    temp_lr=param_group['lr']
             else:
                 for param_group in optimizer.param_groups:
-                    param_group['lr'] = 0.00001
-                    temp_lr = param_group['lr']
+                    param_group['lr']=0.00001
+                    temp_lr=param_group['lr']
             # for param_group in optimizer.param_groups:
             #     param_group['lr']=0.00001
             #     temp_lr=param_group['lr']
